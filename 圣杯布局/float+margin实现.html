@@ -1,0 +1,65 @@
+<!-- 
+圣杯布局：一般用于pc端网页布局
+目的：
+1. 两侧内容宽度固定，中间内容宽度自适应
+2. 三栏布局，中间一栏最先加载、渲染出来（主要内容）
+实现方法：float+margin 
+参考：https://www.bilibili.com/video/BV1dA411u7g8/?spm_id_from=333.337.search-card.all.click&vd_source=14dce35b3ed1822d348e39add00c1ccb
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #header,
+            #footer {
+                height: 50px;
+                background-color: pink;
+            }
+            #footer {
+                clear: both;
+            }
+            #content {
+                padding-left: 200px;
+                padding-right: 150px;
+            }
+            .column {
+                float: left;
+            }
+            #center {
+                width: 100%;
+                background-color: red;
+            }
+            #left {
+                position: relative;
+                right: 200px;
+                width: 200px;
+                /* 实际上是排在center后面 */
+                margin-left: -100%;
+                background-color: blue;
+            }
+            #right {
+                width: 150px;
+                /* 相当于自身没宽度，不会被挤到第二行 */
+                margin-right: -150px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>实现圣杯布局</h1>
+        <div id="header">Header</div>
+        <div id="content">
+            <div id="center" class="column">Center</div>
+            <div id="left" class="column">Left</div>
+            <div id="right" class="column">Right</div>
+        </div>
+        <div id="footer">Footer</div>
+    </body>
+</html>
